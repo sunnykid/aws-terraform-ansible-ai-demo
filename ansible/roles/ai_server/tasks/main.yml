@@ -1,0 +1,25 @@
+- name: Install Python3 and pip
+  yum:
+    name: python3
+    state: present
+
+- name: Install Flask
+  pip:
+    name: flask
+
+- name: Create simple AI app
+  copy:
+    dest: /home/ec2-user/app.py
+    content: |
+      from flask import Flask, request, jsonify
+      app = Flask(__name__)
+      @app.route("/predict", methods=["POST"])
+      def predict():
+          data = request.json
+          # 테스트용: 입력 값 * 2 반환
+          return jsonify({"result": data.get("value", 0) * 2})
+      if __name__ == "__main__":
+          app.run(host="0.0.0.0", port=5000)
+    
+- name: Run AI app with nohup
+  shell: "nohup python3 /home/ec2-user/app.py &"
