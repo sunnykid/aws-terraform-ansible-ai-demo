@@ -26,25 +26,25 @@ resource "aws_security_group" "msa_sg" {
 }
 
 resource "aws_instance" "ai" {
-  ami           = "ami-0123456789abcdef0"
-  instance_type = "t2.micro"
-  key_name      = "test-svr"
+  ami           = "ami-0e6c43c67db18194b"
+  instance_type = "t3.micro"
+  key_name      = "kyt-awskey"
   security_groups = [aws_security_group.msa_sg.name]
   tags = { Name = "AI-Server" }
 }
 
 resource "aws_instance" "app" {
-  ami           = "ami-0123456789abcdef0"
-  instance_type = "t2.micro"
-  key_name      = "test-svr"
+  ami           = "ami-0e6c43c67db18194b"
+  instance_type = "t3.micro"
+  key_name      = "kyt-awskey"
   security_groups = [aws_security_group.msa_sg.name]
   tags = { Name = "App-Server" }
 }
 
 resource "aws_instance" "db" {
-  ami           = "ami-0123456789abcdef0"
-  instance_type = "t2.micro"
-  key_name      = "test-svr"
+  ami           = "ami-0e6c43c67db18194b"
+  instance_type = "t3.micro"
+  key_name      = "kyt-awskey"
   security_groups = [aws_security_group.msa_sg.name]
   tags = { Name = "DB-Server" }
 }
