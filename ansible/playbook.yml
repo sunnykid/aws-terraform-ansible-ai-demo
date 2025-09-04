@@ -1,0 +1,17 @@
+- name: Setup AI Server
+  hosts: ai
+  become: true
+  roles:
+    - ai_server
+
+- name: Setup App Server
+  hosts: app
+  become: true
+  roles:
+    - app_server
+
+- name: Setup DB Server
+  hosts: db
+  become: true
+  roles:
+    - db_server
