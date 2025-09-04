@@ -1,4 +1,0 @@
-- name: Install SQLite (lightweight DB for test)
-  yum:
-    name: sqlite
-    state: present
