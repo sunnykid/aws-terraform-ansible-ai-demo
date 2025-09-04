@@ -1,0 +1,18 @@
+- name: Install Python3 and requests
+  yum:
+    name: python3
+    state: present
+
+- name: Install requests
+  pip:
+    name: requests
+
+- name: Create test script
+  copy:
+    dest: /home/ec2-user/test_ai.py
+    content: |
+      import requests
+      ai_ip = "{{ hostvars['ai']['ansible_host'] }}"
+      url = f"http://{ai_ip}:5000/predict"
+      r = requests.post(url, json={"value": 10})
+      print(r.json())
